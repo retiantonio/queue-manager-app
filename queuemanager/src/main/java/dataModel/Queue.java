@@ -8,7 +8,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Queue implements Runnable {
         //Thread-Safe
-
     private AtomicInteger waitingPeriod = new AtomicInteger();
 
     private Client processingClient = null;
@@ -20,15 +19,18 @@ public class Queue implements Runnable {
             //new Design for Blocking Queue Approach
         try {
             if(processingClient == null) {
-                processingClient = clients.take();
+                processingClient = clients.poll();
             }
 
-            processingClient.decreaseServingTime();
-            if(processingClient.getServeTime() == 0) {
-                processingClient = null;
-            }
+            if(processingClient != null) {
+                processingClient.decreaseServingTime();
+                updateWaitingPeriod();
 
-        } catch (InterruptedException e) {
+                if(processingClient.getServeTime() == 0) {
+                    processingClient = null;
+                }
+            }
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
@@ -39,6 +41,10 @@ public class Queue implements Runnable {
     }
 
     private void updateWaitingPeriod() {
+        waitingPeriod.set(0);
+
+        waitingPeriod.addAndGet(processingClient.getServeTime());
+
         for(Client client : clients) {
             waitingPeriod.addAndGet(client.getServeTime());
         }
@@ -46,6 +52,10 @@ public class Queue implements Runnable {
 
     public int getSize() {
         return clients.size();
+    }
+
+    public boolean isUnprocessedClientQueueEmpty() {
+        return clients.isEmpty();
     }
 
     public int getWaitingPeriod() {

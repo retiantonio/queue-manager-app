@@ -42,12 +42,12 @@ public class Scheduler {
     }
 
     public void startQueueThreads() {
-        for(int i = 0; i < mumberOfQueues; i++) {
-            threadScheduler.scheduleAtFixedRate(queues.get(i), 0, 1, TimeUnit.SECONDS);
+        for(Queue queue : queues) {
+            threadScheduler.scheduleAtFixedRate(queue, 0, 1, TimeUnit.SECONDS);
         }
     }
 
-    public List<Queue>  getQueues() {
+    public List<Queue> getQueues() {
         return queues;
     }
 

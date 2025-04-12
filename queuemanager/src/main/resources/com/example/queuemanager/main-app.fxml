@@ -16,9 +16,9 @@
    <left>
       <AnchorPane id="mainAppButtonPanel" prefHeight="720.0" prefWidth="265.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutX="67.0" layoutY="151.0" spacing="25.0">
+            <VBox layoutY="151.0" prefHeight="182.0" prefWidth="265.0" spacing="25.0">
                <children>
-                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" onAction="#generate" text="Generate">
+                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" onAction="#generate" prefHeight="44.0" prefWidth="414.0" text="Generate">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -27,7 +27,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" onAction="#simulate" text="Simulate">
+                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" onAction="#simulate" prefHeight="44.0" prefWidth="268.0" text="Simulate">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -36,7 +36,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" text="Reset">
+                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="512.0" text="Reset">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -66,7 +66,7 @@
                <children>
                   <HBox id="mainAppTimeDisplayHBox" alignment="CENTER" prefHeight="54.0" prefWidth="123.0" spacing="4.0">
                      <children>
-                        <Label id="mainAppSemiBoldLabel" graphicTextGap="6.0" text="AC">
+                        <Label id="mainAppSemiBoldLabel" fx:id="mainAppCurrentTime" graphicTextGap="6.0" text="AC">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -75,7 +75,7 @@
                               </ImageView>
                            </graphic></Label>
                         <Label id="mainAppSemiBoldLabel" text=":" />
-                        <Label id="mainAppSemiBoldLabel" text="ST" />
+                        <Label id="mainAppSemiBoldLabel" fx:id="mainAppFinalTime" text="ST" />
                      </children>
                   </HBox>
                   <Label id="mainAppWorkSpaceDisplay" alignment="CENTER" prefHeight="54.0" prefWidth="527.0" text="Work Space" textAlignment="CENTER" />

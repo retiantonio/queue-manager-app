@@ -1,6 +1,7 @@
 #clientHBox {
     -fx-background-color: #725D95;
     -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.2, 0, 4);
 }
 
 #clientLabelStyle {

@@ -64,6 +64,10 @@
     -fx-font-weight: 600;
 }
 
+#mainAppButton:hover {
+    -fx-background-color: #443C65;
+}
+
     /*Waiting Line*/
 #mainAppWaitingLineHBox {
     -fx-background-color: #2B273B;

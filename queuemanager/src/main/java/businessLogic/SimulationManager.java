@@ -3,19 +3,26 @@ package businessLogic;
 import dataModel.Client;
 import dataModel.Queue;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SimulationManager implements Runnable {
 
     private int clientsNo;
     private int queuesNo;
     private int simulationInterval;
+    private AtomicInteger currentTime =  new AtomicInteger(0);
 
     private boolean threadsStarted = false;
 
     private Scheduler scheduler;
     private Generator generator;
+
+    private final Object lock = new Object();
 
     private List<Client> waitingClients = new ArrayList<>() ;
 
@@ -36,38 +43,95 @@ public class SimulationManager implements Runnable {
         }
     }
 
-    private void checkAndSendClients(int currentTime) {
-        for(Client client : waitingClients)
-            if(client.getArrivalTime() == currentTime) {
-                waitingClients.remove(client);
+    private void checkAndSendClients() {
+        Iterator<Client> iterator = waitingClients.iterator();
+
+        while(iterator.hasNext()) {
+            Client client = iterator.next();
+            if(client.getArrivalTime() == currentTime.get()) {
+                iterator.remove();
                 scheduler.assignClient(client);
             }
+        }
     }
 
     @Override
     public void run() {
-        int currentTime = 0;
+        currentTime.set(0);
 
-        while(!Thread.currentThread().isInterrupted() && currentTime < simulationInterval) {
+        BufferedWriter bufferedWriter = null;
+
+        try {
+            bufferedWriter = new BufferedWriter(new FileWriter("clients.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        while(!Thread.currentThread().isInterrupted() && currentTime.get() < simulationInterval) {
 
             if(!threadsStarted) {
                 scheduler.startQueueThreads();
                 threadsStarted = true;
             }
 
-            changeStrategyApproach(scheduler.getQueues());
-            checkAndSendClients(currentTime);
+            if(bufferedWriter != null) {
+                writeLogOfEvents(bufferedWriter);
+            }
 
-            currentTime++;
+            changeStrategyApproach(scheduler.getQueues());
+            checkAndSendClients();
 
             try {
                 Thread.sleep(1000); //sleep for 1 second
             } catch(InterruptedException e) {
                 e.printStackTrace();
             }
+
+            currentTime.incrementAndGet();
         }
 
         scheduler.finishThreadScheduling();
+    }
+
+    private void writeLogOfEvents(BufferedWriter bufferedWriter) {
+        try {
+            bufferedWriter.write("Current Time: " + currentTime);
+            bufferedWriter.newLine();
+
+            bufferedWriter.write("Waiting Clients: ");
+            if(!waitingClients.isEmpty()) {
+                for(Client client : waitingClients) {
+                    bufferedWriter.write("(" + client.getId() + "," + client.getArrivalTime() + "," + client.getServeTime() + ")");
+
+                    if(!(client == waitingClients.getLast())) {
+                        bufferedWriter.write(";");
+                    }
+                }
+            } else {
+                bufferedWriter.write("no clients in waiting line");
+            }
+            bufferedWriter.newLine();
+
+            for(int i = 0; i < queuesNo; i++) {
+                bufferedWriter.write("Queue " + i + ": ");
+                Queue queue = scheduler.getQueues().get(i);
+
+                Client processingClient = queue.getProcessingClient();
+
+                if(processingClient != null) {
+                    bufferedWriter.write("(" + processingClient.getId() + "," + processingClient.getArrivalTime() + "," + processingClient.getServeTime() + ");");
+                }
+
+                if(!queue.isUnprocessedClientQueueEmpty()) {
+                    for(Client client : queue.getClientsInQueue()) {
+                        bufferedWriter.write("(" + client.getId() + "," + client.getArrivalTime() + "," + client.getServeTime() + ");");
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void changeStrategyApproach(List<Queue> queues) {
@@ -115,5 +179,13 @@ public class SimulationManager implements Runnable {
 
     public Scheduler getScheduler() {
         return scheduler;
+    }
+
+    public AtomicInteger getCurrentTime() {
+        return currentTime;
+    }
+
+    public int getSimulationInterval() {
+        return simulationInterval;
     }
 }

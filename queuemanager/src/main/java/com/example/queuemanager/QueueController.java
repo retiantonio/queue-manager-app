@@ -20,29 +20,36 @@ public class QueueController implements Runnable {
         queueFlowPane.getChildren().clear();
 
             //first update the processing client
-        queueFlowPane.getChildren().add(createClientComponent(queue.getProcessingClient()));
+        Client processingClient = queue.getProcessingClient();
+        if(processingClient != null) {
+            queueFlowPane.getChildren().add(createClientComponent(processingClient, true));
+        }
 
             //then update the rest of the queue
         for(Client client : queue.getClientsInQueue()) {
-            Node clientComponent = createClientComponent(client);
-            queueFlowPane.getChildren().add(clientComponent);
+            if(client != null) {
+                Node clientComponent = createClientComponent(client, false);
+                queueFlowPane.getChildren().add(clientComponent);
+            }
         }
     }
 
     @Override
     public void run() {
-        while(!Thread.currentThread().isInterrupted()) {
-            Platform.runLater(this::updateComponent);
-        }
+        Platform.runLater(this::updateComponent);
     }
 
-    private Node createClientComponent(Client client) {
+    private Node createClientComponent(Client client, boolean isProcessingClient) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("client.fxml"));
             Node component = loader.load();
 
             ClientController controller = loader.getController();
             controller.setLabels(client);
+
+            if(isProcessingClient) {
+                controller.setProcessingStyle();
+            }
 
             return component;
         } catch (IOException e) {
