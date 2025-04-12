@@ -1,0 +1,10 @@
+#clientHBox {
+    -fx-background-color: #725D95;
+    -fx-background-radius: 8px;
+}
+
+#clientLabelStyle {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+}

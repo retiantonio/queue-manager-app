@@ -1,0 +1,23 @@
+#queueSemiBoldLabel {
+    -fx-text-fill: #EAEAEC;
+    -fx-font-weight: 600;
+    -fx-font-size: 20;
+}
+
+#queueHBox {
+    -fx-background-radius: 24px;
+    -fx-background-color: #2B273B;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.2, 0, 4);
+}
+
+#queueLogoAnchorPane {
+    -fx-background-color: #443C65;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.2, 0, 4);
+}
+
+#queueFlowPane {
+    -fx-background-color: #443C65;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.2, 0, 4);
+}

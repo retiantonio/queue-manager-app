@@ -1,0 +1,59 @@
+#inputTabBorderPane {
+    -fx-background-radius: 24px;
+    -fx-background-color: #2B273B;
+}
+
+#inputTabTopPane {
+    -fx-background-color: linear-gradient(to right, #4D456D, #725D95);
+    -fx-background-radius: 24px 24px 0px 0px;
+}
+    /*Labels*/
+#inputTabTitleLabel {
+    -fx-text-fill: #EAEAEC;
+    -fx-font-weight: 700;
+    -fx-font-size: 24px;
+}
+
+#inputTabInstructionsLabel {
+    -fx-text-fill: #EAEAEC;
+    -fx-font-weight: 600;
+    -fx-font-size: 16px;
+}
+
+    /*TextField Component*/
+#inputTabTextFieldHBox {
+    -fx-background-color: #201D2C;
+    -fx-background-radius: 12px;
+
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.2, 0, 4);
+}
+
+#inputTabTextFieldLabel {
+    -fx-text-fill: linear-gradient(to right, #725D95, #CEBBCF);
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+}
+
+#inputTabTextFieldTextField {
+    -fx-background-color: transparent;
+
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: #8E7DAA;
+    -fx-prompt-text-fill: #4D456D;
+}
+
+#inputTabConfirmButton {
+    -fx-background-radius: 12px;
+    -fx-background-color: linear-gradient(to right, #725D95, #C2ABC4);
+
+    -fx-text-fill: #EAEAEC;
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.2, 0, 4);
+}
+
+#inputTabConfirmButton:hover {
+    -fx-background-color: linear-gradient(to right, #8E7DAA, #CEBBCF);
+}

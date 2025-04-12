@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox id="clientHBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="1.0" stylesheets="@../../../CSS/client-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.queuemanager.ClientController">
+   <children>
+      <Label id="clientLabelStyle" fx:id="clientIDLabel" text="id">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/user-solid.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Label id="clientLabelStyle" text="/" />
+      <Label id="clientLabelStyle" fx:id="clientArrTimeLabel" text="at" HBox.hgrow="ALWAYS" />
+      <Label id="clientLabelStyle" text="/" />
+      <Label id="clientLabelStyle" fx:id="clientServTimeLabel" text="st" HBox.hgrow="ALWAYS" />
+   </children>
+   <padding>
+      <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+   </padding>
+</HBox>
