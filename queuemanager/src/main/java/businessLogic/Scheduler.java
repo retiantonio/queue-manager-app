@@ -8,22 +8,26 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Scheduler {
 
     private int mumberOfQueues;
+    private AtomicInteger simulationCurrentTime;
 
     private Strategy strategy;
     private ScheduledExecutorService threadScheduler;
 
     private List<Queue> queues = new ArrayList<>();
 
-    public Scheduler(int queueNo) {
+    public Scheduler(int queueNo, AtomicInteger simulationCurrentTime) {
         mumberOfQueues = queueNo;
         strategy = new ShortestTimeStrategy();
 
+        this.simulationCurrentTime = simulationCurrentTime;
+
         for(int i = 0; i < queueNo; i++) {
-            queues.add(new Queue());
+            queues.add(new Queue(simulationCurrentTime));
         }
 
         threadScheduler = Executors.newScheduledThreadPool(queueNo);
@@ -53,5 +57,9 @@ public class Scheduler {
 
     public void finishThreadScheduling() {
         threadScheduler.shutdown();
+    }
+
+    public void setSimulationCurrentTime(AtomicInteger currentTime) {
+        simulationCurrentTime = currentTime;
     }
 }

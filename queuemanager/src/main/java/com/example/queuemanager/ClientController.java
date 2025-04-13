@@ -1,25 +1,44 @@
 package com.example.queuemanager;
 
 import dataModel.Client;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
+import javafx.scene.shape.SVGPath;
+import javafx.util.Duration;
 
 public class ClientController {
 
     @FXML private Label clientServTimeLabel;
-    @FXML private Label clientArrTimeLabel;
-    @FXML private Label clientIDLabel;
+    @FXML private SVGPath clientSVGIcon;
 
-    @FXML private HBox clientHBox;
-
-    public void setLabels(Client client) {
-        clientIDLabel.setText(String.valueOf(client.getId()));
-        clientArrTimeLabel.setText(String.valueOf(client.getArrivalTime()));
+    public void setLabel(Client client) {
         clientServTimeLabel.setText(String.valueOf(client.getServeTime()));
     }
 
     public void setProcessingStyle() {
-        clientHBox.setStyle("-fx-background-color: #8E7DAA");
+        processingAnimation();
+    }
+
+    private void processingAnimation() {
+        Timeline timeLine = new Timeline(
+            new KeyFrame(Duration.ZERO, _ -> {
+                clientSVGIcon.setStyle("-fx-fill: #FFFFFF");
+                clientServTimeLabel.setStyle("-fx-text-fill: #725D95");
+            }),
+            new KeyFrame(Duration.millis(62.5), _ -> {
+                clientSVGIcon.setStyle("-fx-fill: #9c8db4");
+                clientServTimeLabel.setStyle("-fx-text-fill: #C6BED4");
+            }),
+            new KeyFrame(Duration.millis(125), _ -> {
+                clientSVGIcon.setStyle("-fx-fill: #725D95");
+                clientServTimeLabel.setStyle("-fx-text-fill: #FFFFFF");
+            })
+        );
+
+        timeLine.setCycleCount(1);
+        timeLine.setAutoReverse(true);
+        timeLine.playFromStart();
     }
 }

@@ -18,7 +18,7 @@
          <children>
             <VBox layoutY="151.0" prefHeight="182.0" prefWidth="265.0" spacing="25.0">
                <children>
-                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" onAction="#generate" prefHeight="44.0" prefWidth="414.0" text="Generate">
+                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" onAction="#generate" prefHeight="44.0" prefWidth="269.0" text="Generate">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -117,9 +117,9 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <FlowPane fx:id="mainAppWaitingLineFlowPane" hgap="7.0" prefHeight="42.0" prefWidth="694.0" prefWrapLength="694.0" vgap="7.0">
+                  <FlowPane fx:id="mainAppWaitingLineFlowPane" alignment="CENTER_LEFT" hgap="6.0" prefHeight="42.0" prefWidth="694.0" prefWrapLength="694.0" vgap="6.0">
                      <padding>
-                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                        <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                      </padding></FlowPane>
                </children>
                <padding>

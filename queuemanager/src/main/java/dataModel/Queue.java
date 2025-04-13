@@ -9,10 +9,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Queue implements Runnable {
         //Thread-Safe
     private AtomicInteger waitingPeriod = new AtomicInteger();
+    private AtomicInteger simulationCurrentTime;
 
     private Client processingClient = null;
     private BlockingQueue<Client> clients = new LinkedBlockingQueue<>();
 
+    public Queue(AtomicInteger simulationCurrentTime) {
+        this.simulationCurrentTime = simulationCurrentTime;
+    }
 
     @Override
     public void run() {
@@ -27,10 +31,12 @@ public class Queue implements Runnable {
                 updateWaitingPeriod();
 
                 if(processingClient.getServeTime() == 0) {
+                    int processingTime = simulationCurrentTime.get();
+                    processingClient.setProcessingTime(processingTime + 1);
                     processingClient = null;
                 }
             }
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

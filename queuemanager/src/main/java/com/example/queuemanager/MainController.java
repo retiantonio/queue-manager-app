@@ -1,6 +1,5 @@
 package com.example.queuemanager;
 
-import businessLogic.Scheduler;
 import businessLogic.SimulationManager;
 import dataModel.Client;
 import dataModel.Queue;
@@ -16,7 +15,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -131,7 +129,7 @@ public class MainController {
             Node component = loader.load();
 
             ClientController controller = loader.getController();
-            controller.setLabels(client);
+            controller.setLabel(client);
 
             return component;
         } catch (IOException e) {

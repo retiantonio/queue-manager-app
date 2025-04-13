@@ -45,7 +45,7 @@ public class QueueController implements Runnable {
             Node component = loader.load();
 
             ClientController controller = loader.getController();
-            controller.setLabels(client);
+            controller.setLabel(client);
 
             if(isProcessingClient) {
                 controller.setProcessingStyle();

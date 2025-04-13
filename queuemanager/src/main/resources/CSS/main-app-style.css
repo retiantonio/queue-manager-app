@@ -4,7 +4,7 @@
 }
 
 #mainAppButtonPanel {
-    -fx-background-color: linear-gradient(to top, #201D2C, #302C42);
+    -fx-background-color: linear-gradient(to top, #1B1825, #302C42);
 }
 
     /*Semi Bold 20 Label Style*/
@@ -66,6 +66,14 @@
 
 #mainAppButton:hover {
     -fx-background-color: #443C65;
+}
+
+#mainAppButton:focused {
+    -fx-background-color: #443C65;
+    -fx-background-radius: 0px 12px 12px 0px;
+    -fx-border-radius: 0px 12px 12px 0px;
+    -fx-border-color: linear-gradient(to top, #725D95, #C2ABC4);
+    -fx-border-width: 0px 3px 0px 0px;
 }
 
     /*Waiting Line*/

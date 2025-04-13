@@ -1,9 +1,13 @@
 package dataModel;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Client {
     private int id;
     private int arrivalTime;
     private int serveTime;
+
+    private int processingTime = 0;
 
     public Client(int id, int arrivalTime, int serveTime) {
         this.id = id;
@@ -27,7 +31,13 @@ public class Client {
         return serveTime;
     }
 
+    public void setProcessingTime(int processingTime) {
+        this.processingTime = processingTime;
+    }
 
+    public int getProcessingTime() {
+        return processingTime;
+    }
 }
 
 
