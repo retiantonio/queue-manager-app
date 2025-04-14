@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -44,6 +45,7 @@ public class MainController {
 
     @FXML private Label mainAppCurrentTime;
     @FXML private Label mainAppFinalTime;
+    @FXML private Label mainAppAverageWaitingTime;
 
     private void updateTimeDisplay() {
         mainAppCurrentTime.setText(String.valueOf(simulationManager.getCurrentTime().get()));
@@ -55,15 +57,19 @@ public class MainController {
 
         List<Client> waitingClients = simulationManager.getWaitingClients();
 
-        for(Client client : waitingClients) {
-            Node clientComponent = createClientComponent(client);
-            mainAppWaitingLineFlowPane.getChildren().add(clientComponent);
+        synchronized (waitingClients) {
+            for(Client client : waitingClients) {
+                Node clientComponent = createClientComponent(client);
+                mainAppWaitingLineFlowPane.getChildren().add(clientComponent);
+            }
         }
     }
 
     @FXML
     private void generate(ActionEvent event) {
         try {
+            mainAppQueueVBox.getChildren().clear();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("input-tab.fxml"));
             Parent root = loader.load();
 
@@ -71,8 +77,12 @@ public class MainController {
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Input Tab");
+            stage.setTitle("Queuerd");
             stage.setScene(new Scene(root));
+
+            Image icon = new Image(getClass().getResource("/Images/bird-logo-app.png").toExternalForm());
+            stage.getIcons().add(icon);
+
             stage.showAndWait();
 
             getInputValues(controller);
@@ -96,6 +106,7 @@ public class MainController {
             Thread simulationThread = new Thread(simulationManager);
 
             //first starting the overall simulation, then the back end simulation of queues
+            simulationThread.setDaemon(true);
             simulationThread.start();
 
             //then I am updating the queue UI
@@ -112,15 +123,43 @@ public class MainController {
                     updateWaitingLine();
                     updateTimeDisplay();
                 });
+
+                if(simulationManager.isFinished()) {
+                    terminateThreads();
+                    Platform.runLater(this::displayAverageWaitingTime);
+                    break;
+                }
+
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(250);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         });
 
+        updateThread.setDaemon(true);
         updateThread.start();
+    }
+
+    private void displayAverageWaitingTime() {
+        try {
+            FXMLLoader displayLoader = new FXMLLoader(getClass().getResource("average-waiting-time.fxml"));
+            Node component = displayLoader.load();
+
+            AverageWaitingTimeController controller = displayLoader.getController();
+            controller.setAverageWaitingTime(simulationManager.getAverageWaitingTime());
+
+            mainAppQueueVBox.getChildren().clear();
+            mainAppQueueVBox.getChildren().add(component);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void terminateThreads() {
+        scheduledExecutorService.shutdown();
+        queueControllers.clear();
     }
 
     private Node createClientComponent(Client client) {

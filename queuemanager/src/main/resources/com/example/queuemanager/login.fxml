@@ -15,7 +15,7 @@
 
 <AnchorPane id="anchorPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../../CSS/login-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.queuemanager.LoginController">
    <children>
-      <Label id="imageLogoLabel" layoutX="229.0" layoutY="339.0" prefHeight="42.0" prefWidth="200.0" text="Fly Over Waiting Time" textAlignment="CENTER">
+      <Label id="imageLogoLabel" layoutX="231.0" layoutY="350.0" text="Fly Over Waiting Time" textAlignment="CENTER">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -26,9 +26,9 @@
             <Image url="@../../../Images/image-logo.png" />
          </image>
       </ImageView>
-      <Pane layoutX="760.0" prefHeight="720.0" prefWidth="520.0">
+      <Pane layoutX="758.0" prefHeight="720.0" prefWidth="522.0">
          <children>
-            <Label id="mainLogoLabel" layoutX="98.0" layoutY="119.0" text="Queuerd">
+            <Label id="mainLogoLabel" alignment="CENTER" layoutX="94.0" layoutY="115.0" text="Queuerd">
                <graphic>
                   <ImageView fitHeight="57.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -36,8 +36,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Label>
-            <HBox id="loginTextFieldHBox" alignment="CENTER_LEFT" layoutX="92.0" layoutY="274.0" prefHeight="61.0" prefWidth="347.0" spacing="10.0">
+            <HBox id="loginTextFieldHBox" alignment="CENTER_LEFT" layoutX="88.0" layoutY="271.0" prefHeight="61.0" prefWidth="347.0" spacing="10.0">
                <children>
                   <Label id="loginTextFieldLabel" text="Username:" />
                   <TextField id="loginTextField" fx:id="loginUsernameTextField" prefHeight="44.0" prefWidth="216.0" promptText="your username" />
@@ -46,7 +49,7 @@
                   <Insets left="10.0" />
                </padding>
             </HBox>
-            <HBox id="loginTextFieldHBox" alignment="CENTER_LEFT" layoutX="92.0" layoutY="360.0" prefHeight="61.0" prefWidth="347.0" spacing="10.0">
+            <HBox id="loginTextFieldHBox" alignment="CENTER_LEFT" layoutX="88.0" layoutY="360.0" prefHeight="61.0" prefWidth="347.0" spacing="10.0">
                <children>
                   <Label id="loginTextFieldLabel" text="Password:" />
                   <PasswordField id="loginTextField" fx:id="loginPasswordTextField" prefHeight="44.0" prefWidth="218.0" promptText="your password" />
@@ -55,12 +58,12 @@
                   <Insets left="10.0" />
                </padding>
             </HBox>
-            <Button fx:id="loginButton" layoutX="134.0" layoutY="517.0" mnemonicParsing="false" onAction="#login" prefHeight="60.0" prefWidth="263.0" text="Log in" />
-            <Label id="loginDataLabel" layoutX="111.0" layoutY="653.0" prefHeight="53.0" prefWidth="319.0" text="Designed and Developed by Reti Antonio using JavaFX, Figma and Canva" textAlignment="CENTER" wrapText="true" />
-            <HBox layoutX="128.0" layoutY="480.0" prefHeight="30.0" prefWidth="285.0" spacing="5.0">
+            <Button fx:id="loginButton" layoutX="131.0" layoutY="519.0" mnemonicParsing="false" onAction="#login" prefHeight="60.0" prefWidth="263.0" text="Log in" />
+            <Label id="loginDataLabel" layoutX="102.0" layoutY="653.0" prefHeight="53.0" prefWidth="319.0" text="Designed and Developed by Reti Antonio using JavaFX, Figma and Canva" textAlignment="CENTER" wrapText="true" />
+            <HBox alignment="CENTER" layoutX="120.0" layoutY="487.0" spacing="5.0">
                <children>
-                  <Label id="loginDataLabel" text="Forgot your credentials?" textAlignment="CENTER" />
-                  <Label id="loginDataLabel" text="Let us help you" textAlignment="CENTER" underline="true" />
+                  <Label id="loginDataLabel" alignment="CENTER" text="Forgot your credentials?" textAlignment="CENTER" />
+                  <Label id="loginDataLabel" alignment="CENTER" text="Let us help you" textAlignment="CENTER" underline="true" />
                </children>
             </HBox>
          </children>

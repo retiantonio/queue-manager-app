@@ -64,6 +64,10 @@ public class Queue implements Runnable {
         return clients.isEmpty();
     }
 
+    public boolean isQueueEmpty() {
+        return clients.isEmpty() && processingClient == null;
+    }
+
     public int getWaitingPeriod() {
         return waitingPeriod.get();
     }

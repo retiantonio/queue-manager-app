@@ -1,0 +1,126 @@
+Current Time: 0
+Waiting Clients: (1,7,2); (2,8,2); (3,22,3); (4,7,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 1
+Waiting Clients: (1,7,2); (2,8,2); (3,22,3); (4,7,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 2
+Waiting Clients: (1,7,2); (2,8,2); (3,22,3); (4,7,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 3
+Waiting Clients: (1,7,2); (2,8,2); (3,22,3); (4,7,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 4
+Waiting Clients: (1,7,2); (2,8,2); (3,22,3); (4,7,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 5
+Waiting Clients: (1,7,2); (2,8,2); (3,22,3); (4,7,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 6
+Waiting Clients: (1,7,2); (2,8,2); (3,22,3); (4,7,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 7
+Waiting Clients: (2,8,2); (3,22,3)
+Queue 0: (1,7,2); 
+Queue 1: (4,7,3); 
+
+Current Time: 8
+Waiting Clients: (3,22,3)
+Queue 0: (1,7,1); (2,8,2); 
+Queue 1: (4,7,2); 
+
+Current Time: 9
+Waiting Clients: (3,22,3)
+Queue 0: (2,8,2); 
+Queue 1: (4,7,1); 
+
+Current Time: 10
+Waiting Clients: (3,22,3)
+Queue 0: (2,8,1); 
+Queue 1: closed
+
+Current Time: 11
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 12
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 13
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 14
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 15
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 16
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 17
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 18
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 19
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 20
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 21
+Waiting Clients: (3,22,3)
+Queue 0: closed
+Queue 1: closed
+
+Current Time: 22
+Waiting Clients: no clients in waiting line
+Queue 0: (3,22,3); 
+Queue 1: closed
+
+Current Time: 23
+Waiting Clients: no clients in waiting line
+Queue 0: (3,22,2); 
+Queue 1: closed
+
+Current Time: 24
+Waiting Clients: no clients in waiting line
+Queue 0: (3,22,1); 
+Queue 1: closed
+
+Average Waiting Time: 2.75

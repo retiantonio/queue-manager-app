@@ -6,7 +6,6 @@ import utils.HelpMethods;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,16 +15,16 @@ public class SimulationManager implements Runnable {
     private int clientsNo;
     private int queuesNo;
     private int simulationInterval;
+
     private double averageWaitingTime;
 
     private AtomicInteger currentTime =  new AtomicInteger(0);
 
     private boolean threadsStarted = false;
+    private boolean isFinished  = false;
 
     private Scheduler scheduler;
     private Generator generator;
-
-    private final Object lock = new Object();
 
     private List<Client> waitingClients = new ArrayList<>() ;
     private List<Client> initialClientList = new ArrayList<>();
@@ -49,13 +48,15 @@ public class SimulationManager implements Runnable {
     }
 
     private void checkAndSendClients() {
-        Iterator<Client> iterator = waitingClients.iterator();
+        synchronized (waitingClients) {
+            Iterator<Client> iterator = waitingClients.iterator();
 
-        while(iterator.hasNext()) {
-            Client client = iterator.next();
-            if(client.getArrivalTime() == currentTime.get()) {
-                iterator.remove();
-                scheduler.assignClient(client);
+            while(iterator.hasNext()) {
+                Client client = iterator.next();
+                if(client.getArrivalTime() == currentTime.get()) {
+                    iterator.remove();
+                    scheduler.assignClient(client);
+                }
             }
         }
     }
@@ -67,7 +68,7 @@ public class SimulationManager implements Runnable {
         BufferedWriter bufferedWriter = null;
 
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter("log-of-events-1.txt"));
+            bufferedWriter = new BufferedWriter(new FileWriter("log-of-events-3.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,6 +78,10 @@ public class SimulationManager implements Runnable {
             if(!threadsStarted) {
                 scheduler.startQueueThreads();
                 threadsStarted = true;
+            }
+
+            if(isReadyToFinish()) {
+                break;
             }
 
             changeStrategyApproach(scheduler.getQueues());
@@ -96,8 +101,9 @@ public class SimulationManager implements Runnable {
         }
 
         scheduler.finishThreadScheduling();
-
         averageWaitingTime = HelpMethods.returnAverageWaitingTime(initialClientList);
+        isFinished = true;
+
         if(bufferedWriter != null) {
             try {
                 bufferedWriter.write("Average Waiting Time: " + averageWaitingTime);
@@ -195,6 +201,19 @@ public class SimulationManager implements Runnable {
         return queues.get(queueIndex).getWaitingPeriod();
     }
 
+    private boolean isReadyToFinish() {
+        for(Queue queue : scheduler.getQueues()) {
+            if(!queue.isQueueEmpty()) {
+                return false;
+            }
+        }
+        return waitingClients.isEmpty();
+    }
+
+    public boolean isFinished() {
+        return isFinished;
+    }
+
     public List<Client> getWaitingClients() {
         return waitingClients;
     }
@@ -209,5 +228,9 @@ public class SimulationManager implements Runnable {
 
     public int getSimulationInterval() {
         return simulationInterval;
+    }
+
+    public double getAverageWaitingTime() {
+        return averageWaitingTime;
     }
 }

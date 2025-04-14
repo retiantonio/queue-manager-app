@@ -2,6 +2,7 @@
     -fx-text-fill: #EAEAEC;
     -fx-font-weight: 600;
     -fx-font-size: 20;
+    -fx-font-family: "Inter 28pt SemiBold";
 }
 
 #queueHBox {

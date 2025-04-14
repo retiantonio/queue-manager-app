@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Scheduler {
 
-    private int mumberOfQueues;
+    private int numberOfQueues;
     private AtomicInteger simulationCurrentTime;
 
     private Strategy strategy;
@@ -21,7 +21,7 @@ public class Scheduler {
     private List<Queue> queues = new ArrayList<>();
 
     public Scheduler(int queueNo, AtomicInteger simulationCurrentTime) {
-        mumberOfQueues = queueNo;
+        numberOfQueues = queueNo;
         strategy = new ShortestTimeStrategy();
 
         this.simulationCurrentTime = simulationCurrentTime;
@@ -34,7 +34,7 @@ public class Scheduler {
     }
 
     public void changeStrategy() {
-        if(SelectionPolicy.selectionPolicy == SelectionPolicy.TIME_STRATEGY) {
+        if (SelectionPolicy.selectionPolicy == SelectionPolicy.TIME_STRATEGY) {
             strategy = new ShortestTimeStrategy();
         } else {
             strategy = new ShortestQueueStrategy();
@@ -51,12 +51,12 @@ public class Scheduler {
         }
     }
 
-    public List<Queue> getQueues() {
-        return queues;
-    }
-
     public void finishThreadScheduling() {
         threadScheduler.shutdown();
+    }
+
+    public List<Queue> getQueues() {
+        return queues;
     }
 
     public void setSimulationCurrentTime(AtomicInteger currentTime) {

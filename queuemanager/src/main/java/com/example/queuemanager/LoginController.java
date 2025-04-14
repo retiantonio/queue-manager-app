@@ -30,7 +30,8 @@ public class LoginController {
                 e.printStackTrace();
             }
         } else {
-            //input mismatch
+            loginPasswordTextField.clear();
+            loginUsernameTextField.clear();
         }
     }
 }

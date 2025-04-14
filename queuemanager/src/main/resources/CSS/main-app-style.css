@@ -7,11 +7,16 @@
     -fx-background-color: linear-gradient(to top, #1B1825, #302C42);
 }
 
+#mainAppBorderPane {
+    -fx-background-color: #4D456D;
+}
+
     /*Semi Bold 20 Label Style*/
 #mainAppSemiBoldLabel {
     -fx-text-fill: #EAEAEC;
     -fx-font-weight: 600;
     -fx-font-size: 20;
+    -fx-font-family: "Inter 28pt SemiBold";
 }
 
     /*Logo Label*/
@@ -19,6 +24,7 @@
     -fx-text-fill: #EAEAEC;
     -fx-font-weight: 700;
     -fx-font-size: 36px;
+    -fx-font-family: "Inter 28pt";
 }
 
     /*Time Display Component*/
@@ -33,6 +39,7 @@
     -fx-text-fill: #EAEAEC;
     -fx-font-weight: 700;
     -fx-font-size: 20;
+    -fx-font-family: "Inter 28pt";
 
     -fx-background-color: linear-gradient(to right, #725D95, #C2ABC4);
     -fx-background-radius: 24px;
@@ -59,21 +66,14 @@
     /*Buttons*/
 #mainAppButton {
     -fx-background-color: transparent;
-    -fx-text-fill: #EAEAEC;
+    -fx-text-fill: #FFFFFF;
     -fx-font-size: 20px;
     -fx-font-weight: 600;
+    -fx-font-family: "Inter 28pt SemiBold";
 }
 
 #mainAppButton:hover {
-    -fx-background-color: #443C65;
-}
-
-#mainAppButton:focused {
-    -fx-background-color: #443C65;
-    -fx-background-radius: 0px 12px 12px 0px;
-    -fx-border-radius: 0px 12px 12px 0px;
-    -fx-border-color: linear-gradient(to top, #725D95, #C2ABC4);
-    -fx-border-width: 0px 3px 0px 0px;
+    -fx-background-color: #201D2C;
 }
 
     /*Waiting Line*/
@@ -88,4 +88,63 @@
     -fx-background-radius: 8px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.2, 0, 4);
 }
+
+#mainAppScrollPane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-pannable: true; /* optional, if you don't want drag-to-scroll */
+}
+
+#mainAppScrollPane > .viewport {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+#mainAppScrollPane .scroll-bar:vertical,
+#mainAppScrollPane .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-padding: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+    -fx-min-width: 0;
+}
+
+#mainAppScrollPane .scroll-bar{
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-max-width: 0;
+    -fx-max-height: 0;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+}
+
+#mainAppScrollPane .scroll-bar .thumb,
+#mainAppScrollPane .scroll-bar .track,
+#mainAppScrollPane .scroll-bar .increment-button,
+#mainAppScrollPane .scroll-bar .decrement-button {
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-max-width: 0;
+    -fx-max-height: 0;
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-shape: "";
+}
+
+#mainAppAverageWaitingTimeHBox {
+    -fx-background-color: #2B273B;
+    -fx-background-radius: 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.2, 0, 4);
+}
+
+
 

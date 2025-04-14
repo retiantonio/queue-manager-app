@@ -11,25 +11,32 @@
     /*Labels*/
 #imageLogoLabel {
     -fx-text-fill: linear-gradient(to right, #725D95, #C2ABC4);
-    -fx-font-weight: 500;
+
     -fx-font-size: 20px;
-    -fx-font-family: "Arial";
+    -fx-font-weight: 500;
+    -fx-font-family: "Inter 28pt Medium";
 }
 
 #mainLogoLabel {
     -fx-text-fill: #FFFFFF;
-    -fx-font-weight: 700;
     -fx-font-size: 64px;
+
+    -fx-font-weight: 700;
+    -fx-font-family: "Inter 28pt";
 }
 
 #loginDataLabel {
     -fx-text-fill: #AEACB6;
     -fx-font-size: 16px;
+
     -fx-font-weight: 500;
+    -fx-font-family: "Inter 28pt Medium";
 }
 
 #loginDataLabel:hover {
     -fx-text-fill: #d6d5da;
+
+    -fx-font-family: "Inter 28pt Medium";
 }
 
     /*Text Fields*/
@@ -39,13 +46,17 @@
     -fx-text-fill: #FFFFFF;
     -fx-prompt-text-fill: #AEACB6;
     -fx-font-size: 20;
+
     -fx-font-weight: 600;
+    -fx-font-family: "Inter 28pt SemiBold";
 }
 
 #loginTextFieldLabel {
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 20;
+
     -fx-font-weight: 600;
+    -fx-font-family: "Inter 28pt SemiBold";
 }
 
 #loginTextFieldHBox{
@@ -63,6 +74,8 @@
 
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 20px;
+
+    -fx-font-family: "Inter 28pt";
     -fx-font-weight: 700;
 
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.2, 0, 4);

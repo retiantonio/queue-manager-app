@@ -24,7 +24,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label id="inputTabInstructionsLabel" layoutX="367.0" layoutY="5.0" prefHeight="76.0" prefWidth="165.0" text="Specify the parameters for your simulation" wrapText="true" />
+            <Label id="inputTabInstructionsLabel" layoutX="370.0" layoutY="12.0" prefHeight="61.0" prefWidth="162.0" text="Specify the parameters for your simulation" wrapText="true" />
          </children>
       </AnchorPane>
    </top>
@@ -33,43 +33,19 @@
          <children>
             <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="18.0">
                <children>
-                  <HBox id="inputTabTextFieldHBox" alignment="CENTER" prefHeight="46.0" prefWidth="246.0">
+                  <HBox id="inputTabTextFieldHBox" alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="246.0">
                      <children>
                         <Label id="inputTabTextFieldLabel" text="Number of clients:" />
-                        <TextField id="inputTabTextFieldTextField" fx:id="numberOfClientsTF" prefHeight="35.0" prefWidth="89.0" promptText="26 (Ex.)">
-                           <padding>
-                              <Insets left="9.0" right="9.0" />
-                           </padding>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox id="inputTabTextFieldHBox" alignment="CENTER" prefHeight="46.0" prefWidth="246.0">
-                     <children>
-                        <Label id="inputTabTextFieldLabel" text="Number of queues:">
-                           <padding>
-                              <Insets left="9.0" right="9.0" />
-                           </padding>
-                        </Label>
-                        <TextField id="inputTabTextFieldTextField" fx:id="numberOfQueuesTF" prefHeight="35.0" prefWidth="89.0" promptText="5 (Ex.)" />
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
-            <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="18.0">
-               <children>
-                  <HBox id="inputTabTextFieldHBox" alignment="CENTER" prefHeight="46.0" prefWidth="246.0">
-                     <children>
-                        <Label id="inputTabTextFieldLabel" text="Minimum arrival time:" />
-                        <TextField id="inputTabTextFieldTextField" fx:id="minimumArrTimeTF" prefHeight="35.0" prefWidth="72.0" promptText="1 (Ex.)" />
+                        <TextField id="inputTabTextFieldTextField" fx:id="numberOfClientsTF" prefHeight="35.0" prefWidth="82.0" promptText="50 (Ex.)" />
                      </children>
                      <padding>
                         <Insets left="9.0" right="9.0" />
                      </padding>
                   </HBox>
-                  <HBox id="inputTabTextFieldHBox" alignment="CENTER" prefHeight="46.0" prefWidth="246.0">
+                  <HBox id="inputTabTextFieldHBox" alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="246.0">
                      <children>
-                        <Label id="inputTabTextFieldLabel" text="Maximum arrival time:" />
-                        <TextField id="inputTabTextFieldTextField" fx:id="maximumArrTimeTF" prefHeight="35.0" prefWidth="68.0" promptText="30 (Ex.)" />
+                        <Label id="inputTabTextFieldLabel" alignment="CENTER" contentDisplay="CENTER" text="Number of queues:" />
+                        <TextField id="inputTabTextFieldTextField" fx:id="numberOfQueuesTF" prefHeight="35.0" prefWidth="73.0" promptText="5 (Ex.)" />
                      </children>
                      <padding>
                         <Insets left="9.0" right="9.0" />
@@ -79,19 +55,19 @@
             </HBox>
             <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="18.0">
                <children>
-                  <HBox id="inputTabTextFieldHBox" alignment="CENTER" prefHeight="46.0" prefWidth="246.0">
+                  <HBox id="inputTabTextFieldHBox" alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="246.0">
                      <children>
-                        <Label id="inputTabTextFieldLabel" prefHeight="25.0" prefWidth="170.0" text="Minimum service time:" />
-                        <TextField id="inputTabTextFieldTextField" fx:id="minimumSerTimeTF" prefHeight="35.0" prefWidth="72.0" promptText="1 (Ex.)" />
+                        <Label id="inputTabTextFieldLabel" text="Min arrival time:" />
+                        <TextField id="inputTabTextFieldTextField" fx:id="minimumArrTimeTF" prefHeight="35.0" prefWidth="79.0" promptText="2 (Ex.)" />
                      </children>
                      <padding>
                         <Insets left="9.0" right="9.0" />
                      </padding>
                   </HBox>
-                  <HBox id="inputTabTextFieldHBox" alignment="CENTER" prefHeight="46.0" prefWidth="246.0">
+                  <HBox id="inputTabTextFieldHBox" alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="246.0">
                      <children>
-                        <Label id="inputTabTextFieldLabel" prefHeight="25.0" prefWidth="177.0" text="Maximum service time:" />
-                        <TextField id="inputTabTextFieldTextField" fx:id="maximumSerTimeTF" prefHeight="35.0" prefWidth="78.0" promptText="9 (Ex.)" />
+                        <Label id="inputTabTextFieldLabel" text="Max arrival time:" />
+                        <TextField id="inputTabTextFieldTextField" fx:id="maximumArrTimeTF" prefHeight="35.0" prefWidth="85.0" promptText="40 (Ex.)" />
                      </children>
                      <padding>
                         <Insets left="9.0" right="9.0" />
@@ -101,10 +77,32 @@
             </HBox>
             <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="18.0">
                <children>
-                  <HBox id="inputTabTextFieldHBox" alignment="CENTER" prefHeight="46.0" prefWidth="246.0">
+                  <HBox id="inputTabTextFieldHBox" alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="246.0">
+                     <children>
+                        <Label id="inputTabTextFieldLabel" text="Min service time:" />
+                        <TextField id="inputTabTextFieldTextField" fx:id="minimumSerTimeTF" prefHeight="35.0" prefWidth="82.0" promptText="1 (Ex.)" />
+                     </children>
+                     <padding>
+                        <Insets left="9.0" right="9.0" />
+                     </padding>
+                  </HBox>
+                  <HBox id="inputTabTextFieldHBox" alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="246.0">
+                     <children>
+                        <Label id="inputTabTextFieldLabel" text="Max service time:" HBox.hgrow="ALWAYS" />
+                        <TextField id="inputTabTextFieldTextField" fx:id="maximumSerTimeTF" prefHeight="35.0" prefWidth="81.0" promptText="7 (Ex.)" />
+                     </children>
+                     <padding>
+                        <Insets left="9.0" right="9.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+               <children>
+                  <HBox id="inputTabTextFieldHBox" alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="246.0">
                      <children>
                         <Label id="inputTabTextFieldLabel" text="Simulation interval:" />
-                        <TextField id="inputTabTextFieldTextField" fx:id="simulationIntervalTF" prefHeight="35.0" prefWidth="88.0" promptText="120 (Ex.)" />
+                        <TextField id="inputTabTextFieldTextField" fx:id="simulationIntervalTF" prefHeight="35.0" prefWidth="78.0" promptText="60 (Ex.)" />
                      </children>
                      <padding>
                         <Insets left="9.0" right="9.0" />

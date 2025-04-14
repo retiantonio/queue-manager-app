@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,13 +13,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../../CSS/main-app-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.queuemanager.MainController">
+<BorderPane id="mainAppBorderPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../../CSS/main-app-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.queuemanager.MainController">
    <left>
       <AnchorPane id="mainAppButtonPanel" prefHeight="720.0" prefWidth="265.0" BorderPane.alignment="CENTER">
          <children>
             <VBox layoutY="151.0" prefHeight="182.0" prefWidth="265.0" spacing="25.0">
                <children>
-                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" onAction="#generate" prefHeight="44.0" prefWidth="269.0" text="Generate">
+                  <Button id="mainAppButton" alignment="BASELINE_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#generate" prefHeight="44.0" prefWidth="269.0" text="Generate">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -26,8 +27,11 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <padding>
+                        <Insets bottom="12.0" left="48.0" top="12.0" />
+                     </padding>
                   </Button>
-                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" onAction="#simulate" prefHeight="44.0" prefWidth="268.0" text="Simulate">
+                  <Button id="mainAppButton" alignment="BASELINE_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#simulate" prefHeight="44.0" prefWidth="268.0" text="Simulate">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -35,8 +39,14 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="12.0" left="48.0" top="12.0" />
+                     </padding>
                   </Button>
-                  <Button id="mainAppButton" graphicTextGap="8.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="512.0" text="Reset">
+                  <Button id="mainAppButton" alignment="BASELINE_LEFT" graphicTextGap="8.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="512.0" text="Reset">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -44,6 +54,12 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="12.0" left="48.0" top="12.0" />
+                     </padding>
                   </Button>
                </children>
             </VBox>
@@ -60,80 +76,86 @@
       </AnchorPane>
    </left>
    <center>
-      <VBox id="mainAppVBox" prefHeight="720.0" prefWidth="1014.0" spacing="18.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" fillHeight="false" spacing="22.0">
+      <ScrollPane id="mainAppScrollPane" hbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <content>
+            <VBox id="mainAppVBox" alignment="TOP_CENTER" spacing="18.0">
                <children>
-                  <HBox id="mainAppTimeDisplayHBox" alignment="CENTER" prefHeight="54.0" prefWidth="123.0" spacing="4.0">
+                  <HBox alignment="CENTER" spacing="22.0">
                      <children>
-                        <Label id="mainAppSemiBoldLabel" fx:id="mainAppCurrentTime" graphicTextGap="6.0" text="AC">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/hourglass-half.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic></Label>
-                        <Label id="mainAppSemiBoldLabel" text=":" />
-                        <Label id="mainAppSemiBoldLabel" fx:id="mainAppFinalTime" text="ST" />
+                        <HBox id="mainAppTimeDisplayHBox" alignment="CENTER" prefHeight="54.0" prefWidth="123.0" spacing="4.0">
+                           <children>
+                              <Label id="mainAppSemiBoldLabel" fx:id="mainAppCurrentTime" graphicTextGap="6.0" text="AC">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Images/hourglass-half.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label id="mainAppSemiBoldLabel" text=":" />
+                              <Label id="mainAppSemiBoldLabel" fx:id="mainAppFinalTime" text="FT" />
+                           </children>
+                        </HBox>
+                        <Label id="mainAppWorkSpaceDisplay" alignment="CENTER" prefHeight="54.0" prefWidth="527.0" text="Work Space" textAlignment="CENTER" />
+                        <HBox id="mainAppUserDisplayHBox" alignment="CENTER" prefHeight="54.0" prefWidth="190.0" spacing="8.0">
+                           <children>
+                              <Label id="mainAppSemiBoldLabel" graphicTextGap="5.0" text="retiantonio1">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Images/circle-user.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Pane id="mainAppUserDisplayOptionsPane" prefWidth="27.0">
+                                 <children>
+                                    <ImageView id="mainAppUserDisplayOptionsImage" fitHeight="20.0" fitWidth="5.0" layoutX="11.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Images/ellipsis-vertical.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                           </children>
+                           <padding>
+                              <Insets bottom="11.0" left="11.0" right="11.0" top="11.0" />
+                           </padding>
+                        </HBox>
                      </children>
                   </HBox>
-                  <Label id="mainAppWorkSpaceDisplay" alignment="CENTER" prefHeight="54.0" prefWidth="527.0" text="Work Space" textAlignment="CENTER" />
-                  <HBox id="mainAppUserDisplayHBox" alignment="CENTER" prefHeight="54.0" prefWidth="190.0" spacing="8.0">
+                  <HBox id="mainAppWaitingLineHBox" alignment="TOP_CENTER" prefHeight="74.0" prefWidth="200.0" spacing="16.0">
                      <children>
-                        <Label id="mainAppSemiBoldLabel" graphicTextGap="5.0" text="retiantonio1">
+                        <Label id="mainAppSemiBoldLabel" graphicTextGap="6.0" prefHeight="52.0" prefWidth="154.0" text="Waiting Line:">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../Images/circle-user.png" />
+                                    <Image url="@../../../Images/clock-regular.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Label>
-                        <Pane id="mainAppUserDisplayOptionsPane" prefWidth="27.0">
-                           <children>
-                              <ImageView id="mainAppUserDisplayOptionsImage" fitHeight="20.0" fitWidth="5.0" layoutX="11.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/ellipsis-vertical.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
+                        <FlowPane fx:id="mainAppWaitingLineFlowPane" alignment="CENTER_LEFT" hgap="6.0" prefHeight="42.0" prefWidth="694.0" prefWrapLength="694.0" vgap="6.0">
+                           <padding>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </padding>
+                        </FlowPane>
                      </children>
                      <padding>
-                        <Insets bottom="11.0" left="11.0" right="11.0" top="11.0" />
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                      </padding>
                   </HBox>
-               </children>
-            </HBox>
-            <HBox id="mainAppWaitingLineHBox" alignment="TOP_CENTER" prefHeight="74.0" prefWidth="200.0" spacing="16.0">
-               <children>
-                  <Label id="mainAppSemiBoldLabel" graphicTextGap="6.0" prefHeight="52.0" prefWidth="141.0" text="Waiting Line:">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../Images/clock-regular.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Label>
-                  <FlowPane fx:id="mainAppWaitingLineFlowPane" alignment="CENTER_LEFT" hgap="6.0" prefHeight="42.0" prefWidth="694.0" prefWrapLength="694.0" vgap="6.0">
-                     <padding>
-                        <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                     </padding></FlowPane>
+                  <VBox fx:id="mainAppQueueVBox" alignment="TOP_CENTER" spacing="18.0" />
                </children>
                <padding>
-                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                  <Insets left="65.0" right="65.0" top="40.0" />
                </padding>
-            </HBox>
-            <VBox fx:id="mainAppQueueVBox" alignment="TOP_CENTER" prefHeight="301.0" prefWidth="885.0" spacing="18.0" />
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <padding>
-            <Insets left="65.0" right="65.0" top="40.0" />
-         </padding>
-      </VBox>
+            </VBox>
+         </content>
+      </ScrollPane>
    </center>
 </BorderPane>

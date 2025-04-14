@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.1">
+  <diagram name="Page-1" id="8BVd_DQoQB5tDvvKtcdF">
+    <mxGraphModel dx="1050" dy="556" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="6YK7q33x5rmsapri-2N8-1" value="User&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="300" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6YK7q33x5rmsapri-2N8-2" value="Manage Queues" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6YK7q33x5rmsapri-2N8-4" value="Minimal Waiting Time" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="240" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6YK7q33x5rmsapri-2N8-5" value="Extends" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="6YK7q33x5rmsapri-2N8-2" target="6YK7q33x5rmsapri-2N8-4">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="460" y="370" as="sourcePoint" />
+            <mxPoint x="620" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6YK7q33x5rmsapri-2N8-10" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="6YK7q33x5rmsapri-2N8-2">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="240" y="340" as="sourcePoint" />
+            <mxPoint x="620" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6YK7q33x5rmsapri-2N8-12" value="Generate Clients and Queues" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="365" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="6YK7q33x5rmsapri-2N8-13" value="Extends" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="6YK7q33x5rmsapri-2N8-12" target="6YK7q33x5rmsapri-2N8-14">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="490" y="399.5" as="sourcePoint" />
+            <mxPoint x="565" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6YK7q33x5rmsapri-2N8-14" value="Based on User&#39;s Input" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="575" y="360" width="140" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="6YK7q33x5rmsapri-2N8-15" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="6YK7q33x5rmsapri-2N8-12">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="240" y="340" as="sourcePoint" />
+            <mxPoint x="330" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
