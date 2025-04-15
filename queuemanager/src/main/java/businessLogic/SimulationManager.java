@@ -68,7 +68,7 @@ public class SimulationManager implements Runnable {
         BufferedWriter bufferedWriter = null;
 
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter("log-of-events-3.txt"));
+            bufferedWriter = new BufferedWriter(new FileWriter("log-of-events-2.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
