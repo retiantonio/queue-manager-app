@@ -126,7 +126,12 @@ public class MainController {
 
                 if(simulationManager.isFinished()) {
                     terminateThreads();
-                    Platform.runLater(this::displayAverageWaitingTime);
+                    Platform.runLater(() -> {
+                        mainAppQueueVBox.getChildren().clear();
+                        displayAverageWaitingTime();
+                        displayPeakHour();
+                    });
+
                     break;
                 }
 
@@ -150,7 +155,20 @@ public class MainController {
             AverageWaitingTimeController controller = displayLoader.getController();
             controller.setAverageWaitingTime(simulationManager.getAverageWaitingTime());
 
-            mainAppQueueVBox.getChildren().clear();
+            mainAppQueueVBox.getChildren().add(component);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void displayPeakHour() {
+        try {
+            FXMLLoader displayLoader = new FXMLLoader(getClass().getResource("peak-hour.fxml"));
+            Node component = displayLoader.load();
+
+            PeakHourController controller = displayLoader.getController();
+            controller.setMainAppPeakHourLabel(simulationManager.getPeakHour());
+
             mainAppQueueVBox.getChildren().add(component);
         } catch (IOException e) {
             e.printStackTrace();

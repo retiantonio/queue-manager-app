@@ -14,7 +14,9 @@ public class HelpMethods {
         double sumWaitingTime = 0;
 
         for (Client client : allClients) {
-            sumWaitingTime += calculateClientWaitingTime(client);
+            if(client.getProcessingTime() != -1) {
+                sumWaitingTime += calculateClientWaitingTime(client);
+            }
         }
 
         return sumWaitingTime / allClients.size();

@@ -30,12 +30,18 @@ public class Queue implements Runnable {
                 processingClient.decreaseServingTime();
                 updateWaitingPeriod();
 
+                int processingTime = simulationCurrentTime.get();
+                processingClient.setProcessingTime(processingTime + 1);
+
                 if(processingClient.getServeTime() == 0) {
-                    int processingTime = simulationCurrentTime.get();
-                    processingClient.setProcessingTime(processingTime + 1);
                     processingClient = null;
                 }
             }
+
+            for(Client client : clients) {
+                client.setProcessingTime(simulationCurrentTime.get() + 1);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,6 +64,13 @@ public class Queue implements Runnable {
 
     public int getSize() {
         return clients.size();
+    }
+
+    public int getQueueSize() {
+        if(processingClient != null) {
+            return getSize() + 1;
+        }
+        return getSize();
     }
 
     public boolean isUnprocessedClientQueueEmpty() {

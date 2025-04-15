@@ -7,7 +7,7 @@ public class Client {
     private int arrivalTime;
     private int serveTime;
 
-    private int processingTime = 0;
+    private int processingTime = -1;
 
     public Client(int id, int arrivalTime, int serveTime) {
         this.id = id;

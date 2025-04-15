@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+
+<HBox id="mainAppAverageWaitingTimeHBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="4.0" stylesheets="@../../../CSS/main-app-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.queuemanager.PeakHourController">
+   <children>
+      <Label id="mainAppSemiBoldLabel" text="Peak hour:" />
+      <Label id="mainAppSemiBoldLabel" fx:id="mainAppPeakHourLabel" text="No" />
+   </children>
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
+</HBox>

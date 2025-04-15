@@ -18,7 +18,7 @@ public class LoginController {
 
     @FXML
     private void login(ActionEvent event) {
-        if(loginUsernameTextField.getText().equals("retiantonio1") || loginPasswordTextField.getText().equals("12345678")) {
+        if(loginUsernameTextField.getText().equals("retiantonio1") && loginPasswordTextField.getText().equals("13072004")) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("main-app.fxml"));
 
             try {

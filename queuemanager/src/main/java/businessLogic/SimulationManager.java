@@ -16,7 +16,10 @@ public class SimulationManager implements Runnable {
     private int queuesNo;
     private int simulationInterval;
 
-    private double averageWaitingTime;
+    private int lastLongestQueueSize = 0;
+    private int peakHour = 0;
+
+    private double averageWaitingTime = 0.0;
 
     private AtomicInteger currentTime =  new AtomicInteger(0);
 
@@ -68,7 +71,7 @@ public class SimulationManager implements Runnable {
         BufferedWriter bufferedWriter = null;
 
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter("log-of-events-2.txt"));
+            bufferedWriter = new BufferedWriter(new FileWriter("log-of-events-1.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -82,6 +85,13 @@ public class SimulationManager implements Runnable {
 
             if(isReadyToFinish()) {
                 break;
+            }
+
+            for(Queue queue : scheduler.getQueues()) {
+                if(queue.getQueueSize() > lastLongestQueueSize) {
+                    lastLongestQueueSize = queue.getQueueSize();
+                    peakHour = currentTime.get();
+                }
             }
 
             changeStrategyApproach(scheduler.getQueues());
@@ -107,6 +117,8 @@ public class SimulationManager implements Runnable {
         if(bufferedWriter != null) {
             try {
                 bufferedWriter.write("Average Waiting Time: " + averageWaitingTime);
+                bufferedWriter.newLine();
+                bufferedWriter.write("Peak Hour: " + peakHour);
                 bufferedWriter.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -232,5 +244,9 @@ public class SimulationManager implements Runnable {
 
     public double getAverageWaitingTime() {
         return averageWaitingTime;
+    }
+
+    public int getPeakHour() {
+        return peakHour;
     }
 }
