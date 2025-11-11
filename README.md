@@ -5,11 +5,11 @@ multithreading for concurrent queue handling and the
 Strategy design pattern to enable exible, customizable
 queue processing strategies. Designed a responsive UI,
 optimized backend performance, and ensured scalable,
-maintainable architecture
+maintainable architecture.
 
 <h2>App Design / Screenshots</h2>
 
-Designed using Figma and Canva
+Designed using Figma and Canva.
 
 <h3>Login Menu</h3>
 
